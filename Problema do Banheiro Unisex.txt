@@ -1,0 +1,15 @@
+Problema do Banheiro Unisex
+
+Homem:
+
+while(True){
+	if (numHomem == 1){
+		down(Placa);
+	}
+	up(Mutex);
+	usa_banheiro(); //Região Critica
+	down(Mutex);
+	if(numHomem == 0){
+		up(Placa);
+	}
+	up(Mutex);
