@@ -1,15 +1,40 @@
 Problema do Banheiro Unisex
 
+numHomem = 0;
+numMulher = 0;
+
+Placa = 0;
+
+Semaphore MutexH = 0;
+Semaphore MutexM = 0;
+
 Homem:
 
 while(True){
 	if (numHomem == 1){
 		down(Placa);
 	}
-	up(Mutex);
+	up(MutexH);
 	usa_banheiro(); //Região Critica
-	down(Mutex);
+	down(MutexH);
 	if(numHomem == 0){
 		up(Placa);
 	}
-	up(Mutex);
+	up(MutexH);
+}
+
+
+Mulher:
+
+while(True){
+	if (numMulher == 1){
+                down(Placa);
+        }
+        up(MutexM);
+        usa_banheiro(); //Região Critica
+        down(MutexM);
+        if(numMulher == 0){
+                up(Placa);
+        }
+        up(MutexM);
+}
